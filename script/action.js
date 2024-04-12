@@ -50,10 +50,27 @@ $(document).ready(function(){
 
     // nav가 따라다니게 하기
 
-    let   scrT, secboxT, sec2T, sec3T, sec4T, sec5T, sec6T, sec7T, sec8T, sec9T
+
+    let scrT, secboxT, sec2T, sec3T, sec4T, sec5T, sec6T, sec7T, sec8T, sec9T, contactT, winH, docH ;
+    let bin = true;
+
+    secboxT = $('#sectionbox').offset().top;
+    if($(window).scrollTop() >= secboxT) {
+        $('#sectionbox nav').css({position:'fixed',top:0});
+    }
+
+    
+    docH = $(document).height();
+    winH = $(window).height();
+    scrT = $(window).scrollTop();
+    if(scrT >= docH - winH){
+        skillGo()
+    }
 
     $(window).scroll(function(){
         scrT = $(window).scrollTop();
+        docH = $(document).height();
+        winH = $(window).height();
         secboxT = $('#sectionbox').offset().top;
         // sec2T = $('#section2').offset().top;
         // sec3T = $('#section3').offset().top;
@@ -63,36 +80,86 @@ $(document).ready(function(){
         // sec7T = $('#section7').offset().top;
         // sec8T = $('#section8').offset().top;
         // sec9T = $('#section9').offset().top;
+        contactT = $('#contact_me').offset().top;
 
 
         if(scrT>=secboxT) {
-            $('#sectionbox nav').css({display:'block'});
-            $('#sectionbox nav').css({top:scrT})
+            $('#sectionbox nav').css({position:'fixed',top:0});
         } else {
-            $('#sectionbox nav').css({display:''});
-        }
+            $('#sectionbox nav').css({position:'', top:''});
+        };
 
-        $('#sectionbox nav .work li a').click(function(){
+        $('#sectionbox nav ul li a').click(function(){
             let navHref = $(this).attr('href');
             let secT = $(navHref).offset().top;
             $('html').stop().animate({scrollTop:secT},1000)
-        })
+        });
+
+        if(scrT >= docH - winH && bin == true){
+            skillGo()
+            bin = false
+        }
+
+
+
     });
 
-    $('#contact_me .skill ul li span.num').each(function(){
-        let spanData = $(this).attr('data-per');
-        console.log(spanData)
-        $(this).parent().find('.nowbar').css({width: spanData+'%'})
-
-        if (spanData>=90) {
-            $(this).parent().find('.nowbar').css({background:'#20AFFF'})
-        } else if (spanData>=80) {
-            $(this).parent().find('.nowbar').css({background:'#FFF963'})
-        } else if (spanData >=70) {
+    function skillGo(){
+        let spanData
+        $('#contact_me .skill ul li span.num').each(function(){
+            spanData = $(this).attr('data-per');
+            $(this).parent().find('.nowbar').css({width: spanData+'%'})
             
-            $(this).parent().find('.nowbar').css({background:'#FFC163'})
-        }
+            let skillThis = $(this)
+            spanData = skillThis.attr('data-per');
+            
+            $({ val : 0 }).animate({ val : spanData }, {
+                duration: 2000,
+                step: function() {
+                    var num = Math.floor(this.val);
+                    skillThis.parent().find('.nowbar').css({width: num+'%'})
+                    skillThis.text(num+'%');
+                },
+                complete: function() {
+                    var num = this.val;
+                    skillThis.parent().find('.nowbar').css({width: num+'%'})
+                    skillThis.text(num+'%');
+                }
+            });
+
+
+            if (spanData>=90) {
+                $(this).parent().find('.nowbar').css({background:'#20AFFF'})
+            } else if (spanData>=80) {
+                $(this).parent().find('.nowbar').css({background:'#FFF963'})
+            } else if (spanData >=70) {
+                
+                $(this).parent().find('.nowbar').css({background:'#FFC163'})
+            }
+
+
+
+        })
+    }
+
+
+    $('figure.more').click(function(){
+        let sectionBoxTop = $('#sectionbox').offset().top;
+        $('html').animate({scrollTop:sectionBoxTop})
     })
+
+
+    $('#section5 .btns a').click(function(){
+        let index = $(this).index();
+        $('#section5 .visualbox figure').css({marginLeft:-index*100+'%'});
+        $(this).addClass('on').siblings().removeClass()
+        $('#section5 .visualbox').animate({scrollTop:0})
+        return false
+    });
+
+
+
+
 
 
 });

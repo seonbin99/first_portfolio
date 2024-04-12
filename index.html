@@ -11,7 +11,7 @@
     <div class="start">
         <nav class="bottom_bar">
             <ul class="leftbox">
-                <li><a href="#"></a></li>
+                <li><a href="javascript:bookmarksite('감사합니다 추가해주셔서', '')"></a></li>
                 <li class="searchbox">
                     <form action="/search" method="GET">
                         <input type="text" id="search" placeholder="시작해볼까요?" maxlength="14" name="Curiosity">
@@ -23,7 +23,7 @@
                 <li><a href="#"></a></li>
             </ul>
             <ul class="rightbox">
-                <li class="bell"><a href="#"><img src="images/bell.png" alt=""></a></li>
+                <li class="bell"><a href="#" ><img src="images/bell.png" alt=""></a></li>
                 <li class="hidden_content">
                     <a href="#"><img src="images/comment-user.svg" alt=""></a>
                 </li>
@@ -115,13 +115,17 @@
                 </div>
             </div>
         </div>
+
+        <div class="welcome">
+            
+        </div>
     </div>
 
     <div id="sectionbox">
         <nav>
             <ul class="centerbox">
                 <li>
-                    <a href="#">Contents</a>
+                    <a href="#section1">Contents</a>
                     <ul class="work">
                         <li><a href="#section2">Mitam City</a></li>
                         <li><a href="#section3">Super Metro</a></li>
@@ -134,7 +138,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#contact_me">Contact</a>
                 </li>
             </ul>
         </nav>
@@ -162,7 +166,7 @@
             <div class="centerbox">
                 <div class="project_name">
                     <h3>1. Mitam City</h3>
-                    <a href="#" class="go_site">사이트 보러가기</a>
+                    <a href="#" class="go_site">열심히 작업 중입니다.</a>
                 </div>
                 <div class="contentbox">
                     <div class="fort_box" data-aos="fade-up-right">
@@ -302,7 +306,7 @@
             <div class="centerbox">
                 <div class="project_name">
                     <h3>4. Mcdonald&#146;s</h3>
-                    <a href="#" class="go_site">사이트 보러가기</a>
+                    <a href="#" class="go_site">열심히 작업 중입니다.</a>
                 </div>
                 <div class="contentbox">
                     <div class="fort_box" data-aos="fade-up-left">
@@ -321,10 +325,15 @@
                         <div class="visualbox">
                             <figure>
                                 <img src="images/mc-main1.JPG" alt="">
+                                <img src="images/mc-main2.png" alt="">
                             </figure>
                         </div>
                     </div>
                     <div class="memo" data-aos="fade-up-right">
+                        <div class="btns">
+                            <a href="#" class="on">concept 1</a>
+                            <a href="#">concept 2</a>
+                        </div>
                         <div class="memo-header">
                             <h2>감상 포인트</h2>
                         </div>
@@ -345,7 +354,7 @@
             <div class="centerbox">
                 <div class="project_name">
                     <h3>5. JLPT</h3>
-                    <a href="#" target="_blank" class="go_site">사이트 보러가기</a>
+                    <a href="#" target="_blank" class="go_site">열심히 작업 중입니다.</a>
                 </div>
                 <div class="contentbox">
                     <div class="fort_box" data-aos="fade-up-right">
@@ -391,7 +400,7 @@
             <div class="centerbox">
                 <div class="project_name">
                     <h3>6. 파묘</h3>
-                    <a href="#" target="_blank" class="go_site">사이트 보러가기</a>
+                    <a href="#" target="_blank" class="go_site">열심히 작업 중입니다.</a>
                 </div>
                 <div class="contentbox">
                     <div class="fort_box" data-aos="fade-up-left">
@@ -434,7 +443,7 @@
             <div class="centerbox">
                 <div class="project_name">
                     <h3>7. 대한문구</h3>
-                    <a href="#" target="_blank" class="go_site">사이트 보러가기</a>
+                    <a href="#" target="_blank" class="go_site">열심히 작업 중입니다.</a>
                 </div>
                 <div class="contentbox">
                     <div class="fort_box" data-aos="fade-up-right">
@@ -627,7 +636,6 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- <script src="http://localhost:3002/dist/aos.js"></script> -->
-
     <script>
         AOS.init({
             easing: 'ease-out-back',
@@ -635,7 +643,24 @@
         });
     </script>
 
+
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 스크롤을 맨 위로 이동하는 함수
+            function scrollToTop() {
+                window.scrollTo(0, 0); // 스크롤을 (0, 0) 좌표로 이동 (맨 위)
+            }
+
+            // 페이지 로드 시 스크롤을 맨 위로 이동
+            scrollToTop();
+
+            // 페이지 새로고침 시 스크롤을 맨 위로 이동
+            window.addEventListener('beforeunload', function() {
+                scrollToTop(); // 페이지 새로고침 시 스크롤을 맨 위로 이동
+            });
+        });
+
+
         hljs.initHighlightingOnLoad();
 
         $('.hero__scroll').on('click', function(e) {
@@ -643,6 +668,124 @@
                 scrollTop: $(window).height()
             }, 1200);
         });
+
+
+
+
+        function bookmarksite(title,url) {    
+        // Internet Explorer   
+            if(document.all) {       
+                window.external.AddFavorite(url, title);    
+            }   
+            // Google Chrome   
+            else if(window.chrome) {      
+                alert("Ctrl+D키를 눌러 즐겨찾기에 추가하실 수 있습니다.");   
+            }   
+            // Firefox   
+            else if (window.sidebar) {       
+                window.sidebar.addPanel(title, url, "");    
+            }   
+            // Opera   
+            else if(window.opera && window.print) {      
+                var elem = document.createElement('a');
+                elem.setAttribute('href',url);       
+                elem.setAttribute('title',title);
+                elem.setAttribute('rel','sidebar');       
+                elem.click();    
+            }
+        }
+    </script>
+
+
+    <script>
+        // 쿠키를 설정하는 함수
+        function setCookie(cookieName, cookieValue, expirationDays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (expirationDays * 24 * 60 * 60 * 1000)); // 만료 시간 설정
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+        }
+
+        // 쿠키를 읽는 함수
+        function getCookie(cookieName) {
+            var name = cookieName + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var cookieArray = decodedCookie.split(';');
+            for (var i = 0; i < cookieArray.length; i++) {
+                var cookie = cookieArray[i];
+                while (cookie.charAt(0) === ' ') {
+                    cookie = cookie.substring(1);
+                }
+                if (cookie.indexOf(name) === 0) {
+                    return cookie.substring(name.length, cookie.length);
+                }
+            }
+            return "";
+        }
+
+        var typingEvent; // typingEvent 함수를 전역으로 선언
+
+
+        // 페이지 로드 시 실행되는 함수
+        function checkVisitCount() {
+           let visitCount = getCookie('visitCount'); // 쿠키에서 접속 횟수를 가져옴
+            if (visitCount === '') {
+                visitCount = 0; // 쿠키가 없으면 접속 횟수를 0으로 초기화
+            } else {
+                visitCount = parseInt(visitCount); // 문자열을 숫자로 변환
+            }
+            
+            function typingEvent(c){
+                if(typeCotrol === true){  // true일 경우 타이핑 진행, false일 경우 타이핑 중지
+                    firstSentence = sentences[visitCount]
+                    let txtNow = firstSentence[txtIndex++];
+                    txtWrap.innerHTML += txtNow === "\n" ? "<br>": txtNow;
+                    if(txtIndex >= firstSentence.length){  // 문자열 index와 문자열 length를 비교해 문자열 마지막을 판별
+                        txtIndex = 0;  // 문자 입력을 다 하면 index를 0으로 초기화
+                        typeCotrol = false;  // 입력 완료시 typeControl을 false로 바꿔 입력 막기
+                    }
+                } else{
+                    // typeControl이 false일 경우
+                    clearInterval(setTyping);  // setInterval 제거 (타이핑 멈춤)
+                    setTimeout(function(){
+                        txtWrap.innerHTML = '';
+                        typeCotrol = true;
+                        setTyping = setInterval(typingEvent, txtSpeed);  // txtDelay만큼 시간 후 재 입력
+                    }, txtDelay)
+                }
+            }
+
+            typingEvent(); // 함수 실행
+
+            visitCount++; // 접속 횟수 증가
+            if (visitCount === 3) {
+                visitCount = 0; // 접속 횟수 초기화
+            }
+
+            setCookie('visitCount', visitCount, 7); // 쿠키에 접속 횟수 저장 (7일 유효)
+        }
+
+        // 페이지 로드 시 checkVisitCount 함수 실행
+        checkVisitCount();
+
+        
+        var txtWrap = document.querySelector('.start .welcome');
+        var sentences = [
+            "처음 뵙겠습니다! 조선빈입니다. \n 애정으로 만든 포트폴리오입니다. \n 편안하게 구경하세요!",
+            "두 번이나 방문해 주셔서 감사합니다. \n 더욱 재밌는 모습 보여드릴게요.",
+            "세 번이나 방문해 주셔서 감사합니다. \n선물을 드릴게요! \n 제 홈페이지의 쿠키를 무료로 리셋 해드렸어요."
+        ];
+        var firstSentence = sentences[0];
+        var firstCharacter = firstSentence[0];
+        var txtSpeed = 100;
+        var txtDelay = 2000;
+        var txtIndex = 0;
+        var typeCotrol = true;
+
+        
+        var setTyping = setInterval(typingEvent, txtSpeed);  // setInterval을 통한 텍스트 입력
+        
+
     </script>
     
 </body>

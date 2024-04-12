@@ -197,7 +197,12 @@ body {
 .start .chatbox> ul> li.chat .cont .letter li.other {
     border-radius: 40px 0px 40px 40px;
     background: #87C6F8;
+    /* animation: other 3s forwards; */
 }
+/* @keyframes other {
+    0% {margin-bottom: -200px;}
+    100% {margin-bottom: 0;}
+} */
 .start .chatbox> ul> li.chat .cont .letter li:nth-child(2) {
     position: relative;
 }
@@ -277,6 +282,7 @@ body {
     left: 4vw;
     top: 2vw;
     overflow: hidden;
+    z-index: 5;
 }
 .start .fort_box {
     display: none;
@@ -401,6 +407,39 @@ body {
     color: #fff;
 }
 
+/* welcome */
+.welcome {
+    font-family: 'DOSPilgiMedium';
+    color: #184B73;
+    padding: 30px;
+    background: #f1ede2;
+    border-radius: 20px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, .4);
+    box-shadow: inset 0px 0px 3px rgba(255, 255, 255, .4);
+    position: absolute;
+    top: 30%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 30px;
+    max-width: 50vw;
+    z-index: 2;
+    line-height: 1.6;
+}
+.welcome:after  {
+    display:inline-block;
+    margin-left:2px;
+    vertical-align:middle;
+    content:'';
+    background:#000;
+    width:2px;
+    height:30px;
+    animation:blink infinite .5s ease;
+  }
+  
+  @keyframes blink {
+    0%	{opacity:0;}
+    100%	{opacity:1;}
+  }
 /* sectionbox 영역 */
 
 #sectionbox {
@@ -435,10 +474,10 @@ body {
     height: 60px;
     background: #000;
     position: absolute;
-    top: 0;
+    top: -100px;
     left: 0;
     z-index: 20;
-    display: none;
+    transition: 1s;
 }
 #sectionbox nav > ul {
     display: flex;
@@ -582,6 +621,12 @@ section .contentbox {
     top: auto;
     left: auto;
 }
+
+#section5 .visualbox {overflow-x: hidden !important;}
+#section5 .visualbox figure {display: flex; transition: 1s; }
+.btns { width: 90%; height: 50px; border-radius: 50px; margin: 20px auto; display: flex; gap:1px; overflow: hidden;}
+.btns a {width: 50%; text-align: center; line-height: 50px;background: #fff; }
+.btns a.on {background: #ec0e01; color: #fff;}
 .memo {
     width: 300px;
     background-color: #F0EADD;
@@ -750,9 +795,11 @@ section .contentbox {
     position: absolute;
     top: 0;
     left: 0;
-    width: auto;
     height: 100%;
     border-radius: 20px;
+}
+#contact_me .selfbox .skillbox .skill ul li .fullbar .nowbar.on {
+    animation: nowvarWidthAni 5s forwards;
 }
 #contact_me .selfbox .skillbox .skill ul li span.num {
     margin-left: 24px;
@@ -763,4 +810,5 @@ section .contentbox {
     color: #000;
     border-radius: 10px;
     text-align: center;
+    width: 40px;
 }
