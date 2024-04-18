@@ -282,6 +282,7 @@ body {
     left: 4vw;
     top: 2vw;
     overflow: hidden;
+    z-index: 5;
 }
 .start .fort_box {
     display: none;
@@ -422,7 +423,23 @@ body {
     font-size: 30px;
     max-width: 50vw;
     z-index: 2;
+    line-height: 1.6;
 }
+.welcome:after  {
+    display:inline-block;
+    margin-left:2px;
+    vertical-align:middle;
+    content:'';
+    background:#000;
+    width:2px;
+    height:30px;
+    animation:blink infinite .5s ease;
+  }
+  
+  @keyframes blink {
+    0%	{opacity:0;}
+    100%	{opacity:1;}
+  }
 /* sectionbox 영역 */
 
 #sectionbox {
