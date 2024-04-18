@@ -14,9 +14,7 @@
                 <li class="searchbox">
                     <form action="/search" method="GET">
                         <input type="text" id="search" placeholder="시작해볼까요?" maxlength="14" name="Curiosity">
-                        <button type="submit">
-                            
-                        </button>
+                        <button type="submit"></button>
                     </form>
                 </li>
                 <li><a href="#"></a></li>
@@ -165,7 +163,7 @@
             <div class="centerbox">
                 <div class="project_name">
                     <h3>1. Mitam City</h3>
-                    <a href="#" class="go_site">열심히 작업 중입니다.</a>
+                    <a href="https://seonbin99.github.io/2024_mitam/" class="go_site">사이트 보러가기</a>
                 </div>
                 <div class="contentbox">
                     <div class="fort_box" data-aos="fade-up-right">
@@ -197,6 +195,10 @@
                             </p>
                             <p>
                                 글상자들의 위치를 잡을 때 margin 혹은 position: absolute를 공부할 수 있었습니다.
+                            </p>
+                            <p>
+                                <b>2024.04.18 기준 업데이트</b><br>
+                                fullpage.js를 이용하여 사이트를 제작하다가 Android에서는 괜찮았던 #visual .textbox의 .deco가 .textbox의 다른 글자를 가리는 상황이 생겼습니다.<br>z-index를 조절해도 계속해서 .deco가 다른 요소를 가렸습니다. 하나씩 되짚어본 결과, .deco의 animation에 준 transform:scale이 영향을 준다는 사실을 찾아냈습니다. scale을 제거하고 width와 height으로 scale을 구현했습니다.
                             </p>
                         </div>
                     </div>
